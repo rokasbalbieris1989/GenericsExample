@@ -21,13 +21,13 @@ public class GenericsExample {
         System.out.println(word);
         
         
-        Set<String> mySet1 = new HashSet<>();
+        Set<String> mySet1 = new HashSet<String>();
         mySet1.add("One");
         mySet1.add("Two");
         mySet1.add("Three");
         mySet1.add("Four");
         
-        Set<String> mySet2 = new HashSet<>();
+        Set<String> mySet2 = new HashSet<String>();
         mySet2.add("One");
         mySet2.add("Three");
         mySet2.add("Five");
@@ -35,15 +35,16 @@ public class GenericsExample {
         
         Set<String> resultSet = union(mySet1,mySet2);
         
-        Iterator<String> iterator = resultSet.iterator();
-        while(iterator.hasNext()){
-            System.out.println(iterator.next());
+        Iterator<String> itr = resultSet.iterator();
+        while(itr.hasNext()){
+            String val = itr.next();
+            System.out.println(val);
         }
     }
     
     public static <E> Set<E> union(Set<E> set1,Set<E> set2){
-        Set result = new HashSet<>(set1);
-        result.add(set2);
+        Set<E> result = new HashSet<E>(set1);
+        result.addAll(set2);
         return result;
     } 
     
